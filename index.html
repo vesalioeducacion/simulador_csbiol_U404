@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-[#f7f9f6]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tejido Nervioso: Comunicación Sináptica, Neuroglía e Impacto Clínico | UCCuyo</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Outfit y JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f1f6eb',
+              100: '#e3edcf',
+              200: '#c7dba0',
+              300: '#abc971',
+              400: '#8eb742',
+              500: '#436600',
+              600: '#395700',
+              700: '#2f4700',
+              800: '#253800',
+              900: '#1a2800'
+            },
+            ucc: {
+              crimson: '#881337',
+              wine: '#4c0519',
+              lightred: '#ffe4e6',
+              blue: '#0369a1',
+              navy: '#0c4a6e',
+              lightblue: '#e0f2fe'
+            },
+            midnight: '#070D1E',
+            deepnavy: '#0E172E',
+            cardnavy: '#16223F',
+            borderblue: '#233863',
+            electric: '#0284c7',
+            synaptic: '#d97706',
+            bioemerald: '#059669',
+            crimsonrose: '#e11d48'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #f7f9f6;
+    }
+    .text-accent { color: #436600; }
+    .bg-accent { background-color: #436600; }
+    .bg-accent-hover:hover { background-color: #324d00; }
+    .bg-accent-light { background-color: #f1f6eb; }
+    .border-accent { border-color: #436600; }
+    .border-accent-light { border-color: rgba(67, 102, 0, 0.2); }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.03); }
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen text-slate-800 antialiased selection:bg-[#f1f6eb] selection:text-[#436600]">
+
+  <!-- ==================== HEADER INSTITUCIONAL ==================== -->
+  <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between">
+      
+      <!-- Logo y Título Institucional -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold text-xl shadow-md">
+          CB
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold text-gray-800 tracking-wide uppercase">TEJIDO NERVIOSO: SINAPSIS, NEUROGLÍA E IMPACTO CLÍNICO</h1>
+          <p class="text-xs text-gray-500 font-semibold">Ciencias Biológicas en Salud (Facultad de Cs. Médicas - UCCuyo)</p>
+        </div>
+      </div>
+
+      <!-- Acciones de Cabecera -->
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#f1f6eb] text-[#436600] border border-[#436600]/20">
+          <i class="fa-solid fa-graduation-cap"></i> Curso de Ingreso
+        </span>
+        <!-- Botón Guía de Uso -->
+        <button onclick="openTutorial()" class="flex items-center gap-1.5 px-3 py-1.5 bg-accent text-white text-xs font-semibold rounded-lg shadow-sm hover:opacity-90 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Guía de Uso
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== CONTENEDOR PRINCIPAL CON SIDEBAR ==================== -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 flex flex-col lg:flex-row gap-6">
+
+    <!-- Menú de Navegación Lateral -->
+    <nav class="w-full lg:w-64 flex flex-row lg:flex-col gap-2 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 overflow-x-auto lg:overflow-x-visible whitespace-nowrap lg:whitespace-normal sticky top-20 h-fit">
+      <button onclick="switchTab('tab-snc-snp')" id="btn-tab-snc-snp" class="bg-accent text-white flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition flex items-center gap-2.5 shadow-xs">
+        <i class="fa-solid fa-network-wired text-sm text-white"></i>
+        <span>1. Organización (Curtis)</span>
+      </button>
+      <button onclick="switchTab('tab-neurona')" id="btn-tab-neurona" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition flex items-center gap-2.5">
+        <i class="fa-solid fa-code-branch text-sm text-[#436600]"></i>
+        <span>2. Neurona & Flujo</span>
+      </button>
+      <button onclick="switchTab('tab-sinapsis')" id="btn-tab-sinapsis" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition flex items-center gap-2.5">
+        <i class="fa-solid fa-bolt text-sm text-[#436600]"></i>
+        <span>3. Simulador Sináptico</span>
+      </button>
+      <button onclick="switchTab('tab-glia')" id="btn-tab-glia" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition flex items-center gap-2.5">
+        <i class="fa-solid fa-shield-halved text-sm text-[#436600]"></i>
+        <span>4. Neuroglía (Alberts)</span>
+      </button>
+      <button onclick="switchTab('tab-clinica')" id="btn-tab-clinica" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition flex items-center gap-2.5">
+        <i class="fa-solid fa-user-nurse text-sm text-[#436600]"></i>
+        <span>5. Cuidados Clínicos</span>
+      </button>
+
+      <!-- Tarjeta lateral de relevancia clínica -->
+      <div class="hidden lg:block mt-4 pt-3 border-t border-gray-100 bg-[#f1f6eb]/80 p-3 rounded-xl border border-[#436600]/20 text-xs text-slate-700 space-y-1">
+        <div class="font-bold text-[#436600] flex items-center gap-1.5 text-[11px] uppercase tracking-wider">
+          <i class="fa-solid fa-user-nurse"></i> Relevancia en Enfermería
+        </div>
+        <p class="leading-relaxed text-gray-600 text-[11.5px]">
+          Comprender la transmisión neuroeléctrica y el soporte glial permite vigilar signos tempranos de desmielinización, prevenir atrofia muscular en encamados y valorar el daño post-infarto en la práctica asistencial.
+        </p>
+      </div>
+    </nav>
+
+    <!-- Área de Contenido Dinámico de los Módulos -->
+    <div class="flex-1 w-full min-w-0">
+
+    <!-- ==================== MÓDULO 1: ORGANIZACIÓN DEL SN ==================== -->
+    <section id="tab-snc-snp" class="tab-content block space-y-6">
+      <!-- Banner de Bienvenida -->
+      <div class="relative overflow-hidden rounded-2xl bg-white border border-gray-200 p-6 sm:p-8 shadow-xs">
+        <div class="relative z-10 max-w-3xl">
+          <div class="inline-flex items-center gap-2 text-xs font-bold text-[#436600] uppercase tracking-wider px-3 py-1 bg-[#f1f6eb] rounded-full border border-[#436600]/30 mb-3">
+            <i class="fa-solid fa-book-medical"></i> Eje Teórico 1 • Referencia: H. Curtis
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+            Organización y Función Integradora del Sistema Nervioso
+          </h2>
+          <p class="text-gray-600 mt-2.5 text-sm sm:text-base leading-relaxed">
+            El sistema nervioso funciona como la central maestra de comunicación, procesamiento y control de la homeostasis del organismo humano. Según el modelo funcional de Curtis, opera bajo una tríada continua: <span class="text-[#436600] font-semibold">Recepción Sensorial &rarr; Integración &rarr; Respuesta Efectora</span>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tríada Funcional Interactiva -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-[#436600]/50 transition-all shadow-xs group">
+          <div class="w-10 h-10 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center text-lg mb-3 border border-sky-200 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-ear-listen"></i>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-1.5">1. Captación de Estímulos</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            Receptores sensoriales especializados (termo, mecano, foto y quimiorreceptores) detectan fluctuaciones del medio interno (presión arterial, glucemia) y del medio externo (dolor, temperatura, luz).
+          </p>
+          <div class="mt-3 text-[11px] font-mono text-sky-800 bg-sky-50 px-2 py-1 rounded border border-sky-200">
+            Vía: Fibras Aferentes Sensitivas
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-[#436600]/50 transition-all shadow-xs group">
+          <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center text-lg mb-3 border border-amber-200 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-1.5">2. Procesamiento e Integración</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            El Sistema Nervioso Central analiza, coteja con información previa almacenada en la memoria, evalúa la gravedad y determina la respuesta más apropiada para conservar la vida y la estabilidad biológica.
+          </p>
+          <div class="mt-3 text-[11px] font-mono text-amber-800 bg-amber-50 px-2 py-1 rounded border border-amber-200">
+            Núcleos Encefálicos y Médula Espinal
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 hover:border-[#436600]/50 transition-all shadow-xs group">
+          <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg mb-3 border border-emerald-200 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-person-walking"></i>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-1.5">3. Emisión de Respuestas</h3>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            Se envían órdenes electroquímicas rápidas hacia órganos diana o efectores: contracción de músculos esqueléticos (voluntarios), relajación vascular/cardíaca o secreciones hormonales glandulares.
+          </p>
+          <div class="mt-3 text-[11px] font-mono text-emerald-800 bg-emerald-50 px-2 py-1 rounded border border-emerald-200">
+            Vía: Fibras Eferentes Motoras y Autónomas
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparador Anatómico: SNC vs SNP -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-xs">
+        <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-layer-group text-[#436600]"></i>
+          Subdivisiones Anatómicas Fundamentales
+        </h3>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Tarjeta SNC -->
+          <div class="bg-slate-50 rounded-xl p-5 border border-gray-200 hover:border-sky-300 transition-all">
+            <div class="flex items-center justify-between mb-3 border-b border-gray-200 pb-2">
+              <span class="text-base font-bold text-sky-800">Sistema Nervioso Central (SNC)</span>
+              <span class="text-xs bg-sky-100 text-sky-800 px-2.5 py-0.5 rounded-full font-mono font-semibold">Eje Axial</span>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-600 mb-4">
+              Ubicado en el eje central del cuerpo, altamente protegido por estructuras óseas (cráneo y columna vertebral), meninges y líquido cefalorraquídeo.
+            </p>
+            <div class="space-y-2.5">
+              <div class="p-3 bg-white rounded-lg border border-gray-200 flex items-start gap-3">
+                <i class="fa-solid fa-brain text-sky-600 mt-1"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900">Encéfalo</h4>
+                  <p class="text-[12px] text-gray-600">Comprende cerebro (corteza, diencéfalo), cerebelo y tronco encefálico. Centro supremo de raciocinio, conciencia y control cardiorrespiratorio.</p>
+                </div>
+              </div>
+              <div class="p-3 bg-white rounded-lg border border-gray-200 flex items-start gap-3">
+                <i class="fa-solid fa-arrows-up-down text-sky-600 mt-1"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900">Médula Espinal</h4>
+                  <p class="text-[12px] text-gray-600">Vía de conducción bidireccional y centro de actos reflejos inmediatos que no requieren demora cortical.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta SNP -->
+          <div class="bg-slate-50 rounded-xl p-5 border border-gray-200 hover:border-emerald-300 transition-all">
+            <div class="flex items-center justify-between mb-3 border-b border-gray-200 pb-2">
+              <span class="text-base font-bold text-emerald-800">Sistema Nervioso Periférico (SNP)</span>
+              <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full font-mono font-semibold">Red Conductora</span>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-600 mb-4">
+              Formado exclusivamente por los cordones de nervios que emergen del encéfalo y médula, extendiéndose hacia todos los tejidos y vísceras corporales.
+            </p>
+            <div class="space-y-2.5">
+              <div class="p-3 bg-white rounded-lg border border-gray-200 flex items-start gap-3">
+                <i class="fa-solid fa-route text-emerald-600 mt-1"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900">Nervios Craneales (12 Pares)</h4>
+                  <p class="text-[12px] text-gray-600">Inervan estructuras de la cabeza, cuello y órganos viscerales toracoabdominales (como el nervio vago).</p>
+                </div>
+              </div>
+              <div class="p-3 bg-white rounded-lg border border-gray-200 flex items-start gap-3">
+                <i class="fa-solid fa-diagram-project text-emerald-600 mt-1"></i>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900">Nervios Raquídeos / Espinales (31 Pares)</h4>
+                  <p class="text-[12px] text-gray-600">Distribución periférica motora y sensitiva para miembros superiores, tronco e inferiores.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MÓDULO 2: MORFOLOGÍA NEURONAL Y FLUJO ==================== -->
+    <section id="tab-neurona" class="tab-content hidden space-y-6">
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+          <div>
+            <span class="text-xs font-bold text-[#436600] uppercase tracking-wider px-3 py-1 bg-[#f1f6eb] rounded-full border border-[#436600]/30">
+              Eje Teórico 2 • Biología Celular Especializada
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">
+              La Neurona: Estructura y Flujo Unidireccional
+            </h2>
+          </div>
+          <div class="bg-slate-50 px-4 py-2 rounded-xl border border-gray-200 text-xs text-gray-600 flex items-center gap-2">
+            <i class="fa-solid fa-circle-exclamation text-amber-600"></i>
+            <span>Célula amitótica terminal (energía volcada a la comunicación)</span>
+          </div>
+        </div>
+
+        <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+          La neurona es la unidad morfológica y funcional del tejido nervioso. A diferencia de células epiteliales o fibroblastos, la neurona madura pierde la capacidad de experimentar mitosis; sus organelos y síntesis proteica están rigurosamente organizados para recibir, procesar y transportar señales bioeléctricas a largas distancias.
+        </p>
+
+        <!-- Diagrama Interactivo de la Neurona -->
+        <div class="mt-6 bg-slate-900 rounded-xl p-4 sm:p-6 border border-slate-800 relative overflow-hidden">
+          <div class="text-xs font-bold text-slate-300 uppercase tracking-widest mb-3 flex items-center justify-between">
+            <span>Explorador Estructural Interactivo (Haz clic en cada región)</span>
+            <span class="text-sky-400 font-mono"><i class="fa-solid fa-arrow-right"></i> Sentido del Impulso</span>
+          </div>
+
+          <!-- Representación Gráfica Vectorial (SVG Responsive) -->
+          <div class="w-full bg-slate-950 rounded-xl p-4 border border-slate-800 flex flex-col items-center">
+            <svg class="w-full h-auto max-w-3xl" viewBox="0 0 800 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Flecha de Flujo Unidireccional de fondo -->
+              <defs>
+                <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#FFB703" stop-opacity="0.9"/>
+                </linearGradient>
+                <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="glow"/>
+                  <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+                </filter>
+              </defs>
+
+              <!-- Dirección del impulso (Fondo) -->
+              <rect x="50" y="10" width="700" height="28" rx="14" fill="#0E172E" stroke="#233863"/>
+              <text x="70" y="29" fill="#94A3B8" font-size="12" font-weight="bold" font-family="Inter">VECTOR DE CONDUCCIÓN ELÉCTRICA:</text>
+              <text x="320" y="29" fill="#00F0FF" font-size="12" font-weight="bold" font-family="JetBrains Mono">DENDRITAS  ➔  SOMA  ➔  AXÓN  ➔  TERMINAL SINÁPTICA</text>
+
+              <!-- Dendritas (Izquierda) -->
+              <g id="svg-dendritas" onclick="showNeuronPart('dendritas')" class="cursor-pointer group">
+                <circle cx="90" cy="140" r="40" fill="#0E172E" stroke="#00F0FF" stroke-width="2" stroke-dasharray="4 2"/>
+                <path d="M50 110 L90 140 L40 160 M60 85 L90 140 L50 200 M90 140 L20 135" stroke="#00F0FF" stroke-width="4" stroke-linecap="round"/>
+                <text x="45" y="225" fill="#00F0FF" font-size="13" font-weight="bold" font-family="Inter">Dendritas</text>
+              </g>
+
+              <!-- Soma y Núcleo -->
+              <g id="svg-soma" onclick="showNeuronPart('soma')" class="cursor-pointer">
+                <circle cx="170" cy="140" r="45" fill="#16223F" stroke="#00F0FF" stroke-width="3" filter="url(#glowEffect)"/>
+                <circle cx="170" cy="140" r="16" fill="#00F0FF" fill-opacity="0.5"/>
+                <circle cx="170" cy="140" r="7" fill="#FFFFFF"/>
+                <text x="150" y="225" fill="#00F0FF" font-size="13" font-weight="bold" font-family="Inter">Soma</text>
+              </g>
+
+              <!-- Cono Axónico y Axón -->
+              <g id="svg-axon" onclick="showNeuronPart('axon')" class="cursor-pointer">
+                <!-- Tubo del Axón central -->
+                <line x1="215" y1="140" x2="630" y2="140" stroke="#FFB703" stroke-width="6" stroke-linecap="round"/>
+
+                <!-- Vainas de Mielina (Segmentadas) -->
+                <!-- Vaina 1 -->
+                <rect x="235" y="120" width="75" height="40" rx="8" fill="#1E293B" stroke="#06D6A0" stroke-width="2.5"/>
+                <!-- Nodo 1 -->
+                <line x1="318" y1="130" x2="318" y2="150" stroke="#FFB703" stroke-width="3"/>
+                <!-- Vaina 2 -->
+                <rect x="328" y="120" width="75" height="40" rx="8" fill="#1E293B" stroke="#06D6A0" stroke-width="2.5"/>
+                <!-- Nodo 2 -->
+                <line x1="411" y1="130" x2="411" y2="150" stroke="#FFB703" stroke-width="3"/>
+                <!-- Vaina 3 -->
+                <rect x="421" y="120" width="75" height="40" rx="8" fill="#1E293B" stroke="#06D6A0" stroke-width="2.5"/>
+                <!-- Nodo 3 -->
+                <line x1="504" y1="130" x2="504" y2="150" stroke="#FFB703" stroke-width="3"/>
+                <!-- Vaina 4 -->
+                <rect x="514" y="120" width="75" height="40" rx="8" fill="#1E293B" stroke="#06D6A0" stroke-width="2.5"/>
+
+                <text x="370" y="195" fill="#06D6A0" font-size="12" font-family="Inter">Vaina de Mielina</text>
+                <text x="350" y="225" fill="#FFB703" font-size="13" font-weight="bold" font-family="Inter">Axón Mielinizado</text>
+              </g>
+
+              <!-- Botones Terminales / Teledendrón -->
+              <g id="svg-terminal" onclick="showNeuronPart('terminal')" class="cursor-pointer">
+                <path d="M630 140 L690 110 M630 140 L700 140 M630 140 L690 170" stroke="#FFB703" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="695" cy="108" r="8" fill="#FFB703"/>
+                <circle cx="705" cy="140" r="8" fill="#FFB703"/>
+                <circle cx="695" cy="172" r="8" fill="#FFB703"/>
+                <text x="640" y="225" fill="#FFB703" font-size="13" font-weight="bold" font-family="Inter">Botones Terminales</text>
+              </g>
+
+              <!-- Onda de impulso animada (simulada) -->
+              <circle id="pulse-dot" cx="170" cy="140" r="6" fill="#00F0FF" filter="url(#glowEffect)">
+                <animate attributeName="cx" from="90" to="700" dur="2.8s" repeatCount="indefinite" />
+                <animate attributeName="fill" values="#00F0FF;#00F0FF;#FFB703;#FFB703" dur="2.8s" repeatCount="indefinite" />
+              </circle>
+            </svg>
+          </div>
+
+          <!-- Cuadro explicativo dinámico -->
+          <div id="neuron-detail-card" class="mt-4 p-4 rounded-xl bg-slate-800 border border-sky-500/40 text-sm">
+            <div class="flex items-center gap-2 text-sky-400 font-bold mb-1">
+              <i class="fa-solid fa-circle-info"></i>
+              <span id="detail-title">Dendritas (Antenas Receptoras)</span>
+            </div>
+            <p id="detail-desc" class="text-slate-200 text-xs sm:text-sm">
+              Prolongaciones citoplasmáticas ramificadas, cortas y abundantes. Su función principal es recibir las señales procedentes de los axones de otras neuronas o de receptores periféricos, conduciendo los potenciales electrotónicos hacia el cuerpo celular.
+            </p>
+          </div>
+        </div>
+
+        <!-- Principio de Flujo Unidireccional -->
+        <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
+          <h4 class="text-sm font-bold text-amber-900 mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-lock text-amber-700"></i>
+            ¿Por qué el impulso nervioso es estrictamente UNIDIRECCIONAL?
+          </h4>
+          <p class="text-xs sm:text-sm text-amber-800 leading-relaxed">
+            El potencial de acción no retrocede debido al <span class="text-amber-950 font-semibold">período refractario</span> de los canales de sodio voltaje-dependientes: una vez que se han abierto y despolarizado la membrana, se inactivan temporalmente impidiendo que la corriente viaje hacia atrás. Así se garantiza una ruta inequívoca: <span class="font-mono text-amber-950 font-bold">Dendrita &rarr; Soma &rarr; Cono Axónico &rarr; Axón &rarr; Botón Presináptico</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MÓDULO 3: SIMULADOR DE TRANSMISIÓN SINÁPTICA ==================== -->
+    <section id="tab-sinapsis" class="tab-content hidden space-y-6">
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+          <div>
+            <span class="text-xs font-bold text-[#436600] uppercase tracking-wider px-3 py-1 bg-[#f1f6eb] rounded-full border border-[#436600]/30">
+              Eje Teórico 3 • Laboratorio Biofísico
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">
+              Mecanismo Electroquímico de la Sinapsis Química
+            </h2>
+          </div>
+          <button onclick="dispararSinapsis()" id="btn-fire-ap" class="px-5 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-bold text-sm shadow-sm transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2">
+            <i class="fa-solid fa-bolt text-amber-300"></i> Disparar Potencial de Acción
+          </button>
+        </div>
+
+        <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+          En la sinapsis química, la corriente eléctrica (potencial de acción) no puede saltar directamente a través del espacio físico entre dos neuronas. Se requiere un <span class="text-[#436600] font-semibold">transductor electroquímico</span>: la despolarización moviliza vesículas cargadas de neurotransmisores que se vierten a la hendidura para activar la célula postsináptica.
+        </p>
+
+        <!-- Canvas Interactivo de la Sinapsis -->
+        <div class="mt-6 bg-slate-900 rounded-2xl p-4 border border-slate-800 relative overflow-hidden flex flex-col items-center">
+          <div class="w-full flex justify-between items-center text-xs text-slate-300 mb-2 px-2 font-medium">
+            <span class="text-sky-400 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down"></i> Botón Terminal Presináptico</span>
+            <span class="text-amber-300 font-semibold">Hendidura Sináptica (20 - 40 nm)</span>
+            <span class="text-emerald-400 flex items-center gap-1.5"><i class="fa-solid fa-arrow-down"></i> Membrana Postsináptica</span>
+          </div>
+
+          <div class="relative w-full max-w-2xl bg-slate-950 rounded-xl border border-slate-800 overflow-hidden" style="height: 380px;">
+            <canvas id="synapseCanvas" class="w-full h-full block"></canvas>
+
+            <!-- Overlay de Estado de la Fase -->
+            <div id="synapse-status-pill" class="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-md border border-slate-700 px-3 py-1.5 rounded-lg text-xs text-slate-200 font-mono shadow-md flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-slate-500 inline-block animate-pulse"></span>
+              <span id="synapse-status-text">Estado: Membrana en reposo (-70 mV)</span>
+            </div>
+          </div>
+
+          <!-- Secuencia Paso a Paso Regulada -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full mt-4">
+            <div id="step-1" class="step-card p-3 rounded-xl bg-slate-800 border border-slate-700 text-xs transition-all">
+              <div class="font-bold text-sky-400 mb-1 flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-sky-950 text-center text-[10px] flex items-center justify-center font-mono border border-sky-400">1</span>
+                Llegada del Impulso
+              </div>
+              <p class="text-slate-300 text-[11px]">La onda eléctrica despolariza el botón terminal del axón abriendo canales de Ca²⁺ dependientes de voltaje.</p>
+            </div>
+
+            <div id="step-2" class="step-card p-3 rounded-xl bg-slate-800 border border-slate-700 text-xs transition-all">
+              <div class="font-bold text-amber-300 mb-1 flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-amber-950 text-center text-[10px] flex items-center justify-center font-mono border border-amber-300">2</span>
+                Exocitosis de Vesículas
+              </div>
+              <p class="text-slate-300 text-[11px]">Las vesículas sinápticas se fusionan con la membrana presináptica, volcando neurotransmisores a la hendidura.</p>
+            </div>
+
+            <div id="step-3" class="step-card p-3 rounded-xl bg-slate-800 border border-slate-700 text-xs transition-all">
+              <div class="font-bold text-emerald-400 mb-1 flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-emerald-950 text-center text-[10px] flex items-center justify-center font-mono border border-emerald-400">3</span>
+                Unión a Receptores
+              </div>
+              <p class="text-slate-300 text-[11px]">Los neurotransmisores difunden y encajan como llave-cerradura en receptores de la membrana postsináptica.</p>
+            </div>
+
+            <div id="step-4" class="step-card p-3 rounded-xl bg-slate-800 border border-slate-700 text-xs transition-all">
+              <div class="font-bold text-rose-400 mb-1 flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-rose-950 text-center text-[10px] flex items-center justify-center font-mono border border-rose-400">4</span>
+                Nuevo Potencial
+              </div>
+              <p class="text-slate-300 text-[11px]">Apertura de canales iónicos químicodependientes: entra Na⁺ y se propaga un nuevo potencial de acción.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MÓDULO 4: LA NEUROGLÍA (ALBERTS) ==================== -->
+    <section id="tab-glia" class="tab-content hidden space-y-6">
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+          <div>
+            <span class="text-xs font-bold text-[#436600] uppercase tracking-wider px-3 py-1 bg-[#f1f6eb] rounded-full border border-[#436600]/30">
+              Eje Teórico 4 • Citología de Soporte (B. Alberts)
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">
+              Células Gliales: El Soporte Logístico e Inmunitario Vital
+            </h2>
+          </div>
+          <div class="bg-slate-50 px-4 py-2 rounded-xl border border-gray-200 text-xs text-gray-600 flex items-center gap-2">
+            <i class="fa-solid fa-users text-[#436600]"></i>
+            <span>Superan en número a las neuronas (aprox. 5 a 10 veces más)</span>
+          </div>
+        </div>
+
+        <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+          Como describe Alberts en su clásico postulado biológico celular, las neuronas son incapaces de subsistir o desempeñar su tarea sin una red nodriza. Las <span class="text-[#436600] font-semibold">células de la neuroglía</span> no disparan potenciales de acción propagados, pero proporcionan nutrición, aislamiento bioeléctrico y defensa inmunitaria local imprescindible.
+        </p>
+
+        <!-- Tríada Glial Detallada -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          
+          <!-- ASTROCITOS -->
+          <div class="bg-slate-50 border border-gray-200 rounded-2xl p-5 hover:border-emerald-300 transition-all flex flex-col justify-between shadow-xs">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl mb-4 border border-emerald-200">
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-lg font-bold text-gray-900">Astrocitos</h3>
+                <span class="text-[10px] font-mono bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">SNC</span>
+              </div>
+              <h4 class="text-xs font-semibold text-emerald-700 mb-3">Nutrición y Barrera Hematoencefálica (BHE)</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                Poseen prolongaciones citoplasmáticas llamadas <em>pies chupadores o podocitos</em> que envuelven los capilares sanguíneos cerebrales. Captan glucosa plasmática, la metabolizan a lactato y la transfieren a las neuronas, a la vez que regulan el potasio extracelular (K⁺).
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-200 text-[11px] text-gray-500">
+              <strong class="text-gray-900">Clínica:</strong> Cicatrización glial (gliosis reactiva) tras isquemia o traumatismo en el encéfalo.
+            </div>
+          </div>
+
+          <!-- OLIGODENDROCITOS Y CÉLULAS DE SCHWANN -->
+          <div class="bg-slate-50 border border-gray-200 rounded-2xl p-5 hover:border-sky-300 transition-all flex flex-col justify-between shadow-xs">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center text-xl mb-4 border border-sky-200">
+                <i class="fa-solid fa-ring"></i>
+              </div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-lg font-bold text-gray-900">Mielinizadores</h3>
+                <span class="text-[10px] font-mono bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-bold">SNC y SNP</span>
+              </div>
+              <h4 class="text-xs font-semibold text-sky-700 mb-3">Oligodendrocitos (SNC) / Schwann (SNP)</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                Enrollan capas concéntricas de membrana plasmática rica en lípidos (esfingomielina) alrededor de los axones. Aíslan eléctricamente el axón provocando la <em>conducción saltatoria</em> a través de los nodos de Ranvier, multiplicando la velocidad de conducción hasta por 50 veces.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-200 text-[11px] text-gray-500">
+              <strong class="text-gray-900">Clínica:</strong> Blanco de ataques autoinmunes en Esclerosis Múltiple (SNC) y Guillain-Barré (SNP).
+            </div>
+          </div>
+
+          <!-- MICROGLÍA -->
+          <div class="bg-slate-50 border border-gray-200 rounded-2xl p-5 hover:border-rose-300 transition-all flex flex-col justify-between shadow-xs">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-800 flex items-center justify-center text-xl mb-4 border border-rose-200">
+                <i class="fa-solid fa-virus-slash"></i>
+              </div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-lg font-bold text-gray-900">Microglía</h3>
+                <span class="text-[10px] font-mono bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">Inmunidad SNC</span>
+              </div>
+              <h4 class="text-xs font-semibold text-rose-700 mb-3">Fagocitosis y Patrullaje Inmunitario</h4>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                Derivadas de precursores monocíticos mesodérmicos (sistema fagocítico mononuclear). Ante infecciones virales/bacterianas, muerte neuronal o detritos celulares, se activan, cambian a forma ameboide y fagocitan agresores y desechos.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-gray-200 text-[11px] text-gray-500">
+              <strong class="text-gray-900">Clínica:</strong> Modulan la neuroinflamación en meningitis, encefalitis y patologías neurodegenerativas.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla comparativa SNC vs SNP en Mielinización -->
+        <div class="mt-6 p-4 rounded-xl bg-slate-50 border border-gray-200 overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="text-gray-500 border-b border-gray-200 font-mono uppercase">
+              <tr>
+                <th class="pb-2">Célula Mielinizante</th>
+                <th class="pb-2">Localización</th>
+                <th class="pb-2">Capacidad de Mielinización</th>
+                <th class="pb-2">Regeneración Axonal</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 text-gray-700">
+              <tr>
+                <td class="py-2.5 font-bold text-gray-900">Oligodendrocito</td>
+                <td class="py-2.5">SNC (Encéfalo y Médula)</td>
+                <td class="py-2.5">Envuelve segmentos de hasta 30-50 axones distintos</td>
+                <td class="py-2.5 text-rose-700 font-semibold">Muy pobre / Inhibida por cicatriz glial</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-bold text-gray-900">Célula de Schwann</td>
+                <td class="py-2.5">SNP (Nervios Craneales y Raquídeos)</td>
+                <td class="py-2.5">Una sola célula envuelve un único internodo axonal</td>
+                <td class="py-2.5 text-emerald-700 font-semibold">Favorable (guía la elongación axonal con bandas de Büngner)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== MÓDULO 5: CUIDADOS CLÍNICOS E HISTOLOGÍA ==================== -->
+    <section id="tab-clinica" class="tab-content hidden space-y-6">
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs">
+        <div class="max-w-3xl mb-6">
+          <span class="text-xs font-bold text-rose-800 uppercase tracking-wider px-3 py-1 bg-rose-50 rounded-full border border-rose-200">
+            Eje Teórico 5 • Razonamiento Clínico en Enfermería
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">
+            Histología Aplicada y Práctica de Cuidados de Enfermería
+          </h2>
+          <p class="text-gray-600 mt-2 text-sm sm:text-base leading-relaxed">
+            El rigor del cuidado enfermero no radica solo en aplicar técnicas, sino en comprender la alteración tisular íntima. Analizamos 3 entidades donde el conocimiento de la histología orienta directamente las intervenciones de enfermería en sala:
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- CASO 1: ESCLEROSIS MÚLTIPLE -->
+          <div class="bg-slate-50 rounded-2xl p-6 border border-gray-200 hover:border-sky-300 transition-all">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h3 class="text-lg font-bold text-sky-900 flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+                1. Esclerosis Múltiple (Desmielinización en SNC)
+              </h3>
+              <span class="text-xs font-mono bg-white px-2.5 py-1 rounded text-gray-700 border border-gray-200 font-semibold">
+                Patología Desmielinizante
+              </span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3 text-xs sm:text-sm">
+              <div class="p-4 bg-white rounded-xl border border-gray-200">
+                <h4 class="font-bold text-gray-900 mb-1.5 text-xs uppercase tracking-wider text-sky-800">
+                  <i class="fa-solid fa-microscope text-sky-600"></i> Base Histopatológica:
+                </h4>
+                <p class="text-gray-600 leading-relaxed">
+                  Trastorno autoinmune donde los linfocitos T cruzan la BHE y destruyen selectivamente la <span class="text-sky-900 font-semibold">vaina de mielina</span> sintetizada por los oligodendrocitos. El axón pierde el aislamiento, produciendo fuga de corriente iónica, enlentecimiento crítico o bloqueo absoluto de la conducción saltatoria.
+                </p>
+              </div>
+
+              <div class="p-4 bg-white rounded-xl border border-gray-200">
+                <h4 class="font-bold text-gray-900 mb-1.5 text-xs uppercase tracking-wider text-amber-800">
+                  <i class="fa-solid fa-notes-medical text-amber-600"></i> Cuidados y Vigilancia de Enfermería:
+                </h4>
+                <ul class="text-gray-600 list-disc list-inside space-y-1.5">
+                  <li><strong>Prevención de caídas:</strong> Valoración motora y de sensibilidad propioceptiva por marcha atáxica.</li>
+                  <li><strong>Control térmico estricto:</strong> El fenómeno de Uhthoff empeora la conducción nerviosa al aumentar la temperatura corporal (fiebre o calor ambiental).</li>
+                  <li><strong>Manejo vesical:</strong> Detección temprana de vejiga neurógena y residuo post-miccional para evitar sepsis urinarias.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CASO 2: REPOSO PROLONGADO Y ATROFIA MUSCULAR -->
+          <div class="bg-slate-50 rounded-2xl p-6 border border-gray-200 hover:border-emerald-300 transition-all">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h3 class="text-lg font-bold text-emerald-900 flex items-center gap-2">
+                <i class="fa-solid fa-bed text-emerald-700"></i>
+                2. Encamamiento Prolongado y Atrofia Muscular por Desuso
+              </h3>
+              <span class="text-xs font-mono bg-white px-2.5 py-1 rounded text-gray-700 border border-gray-200 font-semibold">
+                Músculo Esquelético
+              </span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3 text-xs sm:text-sm">
+              <div class="p-4 bg-white rounded-xl border border-gray-200">
+                <h4 class="font-bold text-gray-900 mb-1.5 text-xs uppercase tracking-wider text-emerald-800">
+                  <i class="fa-solid fa-microscope text-emerald-600"></i> Base Histológica:
+                </h4>
+                <p class="text-gray-600 leading-relaxed">
+                  Las fibras musculares estriadas esqueléticas dependen del estímulo mecánico tensional y de la descarga continua de la motoneurona alfa. La inmovilidad activa la vía ubiquitina-proteasoma: se degradan los filamentos de <span class="text-emerald-900 font-semibold">actina y miosina</span>, reduciendo drásticamente el diámetro de los miocitos sin que disminuya el número total de células.
+                </p>
+              </div>
+
+              <div class="p-4 bg-white rounded-xl border border-gray-200">
+                <h4 class="font-bold text-gray-900 mb-1.5 text-xs uppercase tracking-wider text-emerald-800">
+                  <i class="fa-solid fa-notes-medical text-emerald-600"></i> Cuidados y Anticipación de Enfermería:
+                </h4>
+                <ul class="text-gray-600 list-disc list-inside space-y-1.5">
+                  <li><strong>Movilización precoz:</strong> Ejercicios pasivos de rango articular en pacientes sedados en UTI y activos asistidos tan pronto sea seguro.</li>
+                  <li><strong>Alineación postural:</strong> Colocación de taloneras y soportes para evitar el pie equino por retracción tendinosa.</li>
+                  <li><strong>Plan de cambios decúbito c/2 horas:</strong> Protege la microcirculación cutánea evitando úlceras por presión añadidas a la atrofia.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CASO 3: INFARTO DE MIOCARDIO Y CICATRIZ FIBROSA -->
+          <div class="bg-slate-50 rounded-2xl p-6 border border-gray-200 hover:border-rose-300 transition-all">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <h3 class="text-lg font-bold text-rose-900 flex items-center gap-2">
+                <i class="fa-solid fa-heart-crack text-rose-700"></i>
+                3. Infarto de Miocardio: Cicatrización Conectiva Fibrosa
+              </h3>
+              <span class="text-xs font-mono bg-white px-2.5 py-1 rounded text-gray-700 border border-gray-200 font-semibold">
+                Músculo Cardíaco
+              </span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3 text-xs sm:text-sm">
+              <div class="p-4 bg-white rounded-xl border border-gray-200">
+                <h4 class="font-bold text-gray-900 mb-1.5 text-xs uppercase tracking-wider text-rose-800">
+                  <i class="fa-solid fa-microscope text-rose-600"></i> Base Histológica:
+                </h4>
+                <p class="text-gray-600 leading-relaxed">
+                  El miocardiocito adulto tiene una capacidad de regeneración prácticamente nula (célula permanente). Tras una isquemia aguda prolongada, el tejido necrótico es reabsorbido por macrófagos y reemplazado por <span class="text-rose-900 font-semibold">tejido conectivo denso fibroso rico en colágeno tipo I</span>. Este parche cicatrizal carece de contractilidad y de propiedades de conducción eléctrica rítmica.
+                </p>
+              </div>
+
+              <div class="p-4 bg-white rounded-xl border border-gray-200">
+                <h4 class="font-bold text-gray-900 mb-1.5 text-xs uppercase tracking-wider text-rose-800">
+                  <i class="fa-solid fa-notes-medical text-rose-600"></i> Cuidados y Consecuencias de Enfermería:
+                </h4>
+                <ul class="text-gray-600 list-disc list-inside space-y-1.5">
+                  <li><strong>Monitoreo hemodinámico estricto:</strong> La pérdida de masa contráctil reduce la fracción de eyección; vigilar signos de insuficiencia cardíaca (crepitantes, disnea, ingurgitación yugular).</li>
+                  <li><strong>Monitoreo electrocardiográfico continuo:</strong> El borde entre el miocardio sano y la cicatriz conectiva es el sustrato perfecto para arritmias por reentrada letales (TV / FV).</li>
+                  <li><strong>Educación para la rehabilitación cardíaca:</strong> Titulación de la actividad física sin sobrecargar la pared ventricular cicatrizal adelgazada.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div>
+  </main>
+
+  <!-- Modal Guía de Uso Institucional -->
+  <div id="tutorial-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-3 sm:p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-5 sm:p-6 shadow-xl border border-gray-200 flex flex-col max-h-[92vh] overflow-hidden animate-fadeIn">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-5 bg-accent rounded-full inline-block"></span>
+          <h3 class="text-base font-bold text-gray-800">Guía de Uso del Simulador</h3>
+        </div>
+        <button onclick="closeTutorial()" class="text-gray-400 hover:text-gray-600 p-1 rounded-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="overflow-y-auto custom-scroll pr-2 my-3 space-y-3.5 text-xs text-slate-600 leading-relaxed max-h-[480px]">
+        <!-- Propósito Académico e Institucional -->
+        <div class="p-3.5 bg-accent-light/80 rounded-xl border border-accent/25">
+          <strong class="text-accent block mb-1 font-sans text-xs flex items-center gap-1.5">
+            <i class="fa-solid fa-bullseye text-sm"></i> Propósito Institucional y Marco Académico
+          </strong>
+          Diseñado para aspirantes a la <strong>Licenciatura en Enfermería de la Facultad de Ciencias Médicas (Universidad Católica de Cuyo - San Juan)</strong>. Su meta es consolidar la comprensión morfológica y electroquímica del <strong>tejido nervioso</strong>, la función integradora del SNC y SNP según <strong>Curtis</strong>, la dinámica vectorial del impulso neuronal, la transmisión sináptica, el soporte logístico e inmunitario de la <strong>neuroglía según Alberts</strong> y su impacto directo en los cuidados asistenciales de enfermería.
+        </div>
+
+        <!-- Navegación y Estaciones Interactivas -->
+        <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-150 space-y-2">
+          <strong class="text-primary block font-sans text-xs flex items-center gap-1.5">
+            <i class="fa-solid fa-compass text-sm text-[#436600]"></i> Navegación y Estaciones Interactivas (5 Módulos):
+          </strong>
+          <ul class="space-y-1.5 text-[11.5px] text-gray-600 pl-1">
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-bars text-accent mt-0.5 shrink-0 text-xs"></i>
+              <span><strong>Menú Lateral:</strong> Permite alternar de forma inmediata entre organización del SN, anatomía neuronal interactiva, simulador electroquímico de sinapsis, neuroglía y cuidados clínicos.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-network-wired text-accent mt-0.5 shrink-0 text-xs"></i>
+              <span><strong>Módulo 1 (Organización del SN - Curtis):</strong> Tríada funcional completa (captación sensorial aferente por receptores, procesamiento/integración central y respuesta eferente motora somática o autónoma/glandular) junto con la subdivisión anatómica del SNC (encéfalo y médula protegidos por meninges/LCR) y SNP (12 pares craneales y 31 pares raquídeos).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-code-branch text-accent mt-0.5 shrink-0 text-xs"></i>
+              <span><strong>Módulo 2 (Neurona & Flujo Unidireccional):</strong> Diagrama SVG interactivo y vector de conducción bioeléctrica. Al hacer clic en cada región se revelan detalles citológicos: dendritas receptoras, soma con cuerpos de Nissl y núcleo, cono axónico (zona gatillo), axón con vainas de mielina y nodos de Ranvier (conducción saltatoria) y botones terminales, fundamentando la unidireccionalidad por el período refractario de los canales de Na⁺ voltaje-dependientes.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-bolt text-accent mt-0.5 shrink-0 text-xs"></i>
+              <span><strong>Módulo 3 (Simulador Sináptico):</strong> Laboratorio dinámico en Canvas HTML5 con botón de disparo de potencial de acción y visualización interactiva de 4 fases electroquímicas: 1) Llegada de la onda despolarizante e influjo de Ca²⁺; 2) Exocitosis de vesículas y difusión de neurotransmisores a la hendidura (20-40 nm); 3) Acoplamiento específico llave-cerradura en receptores postsinápticos; y 4) Apertura de canales iónicos químicos con generación del nuevo potencial de acción.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-shield-halved text-accent mt-0.5 shrink-0 text-xs"></i>
+              <span><strong>Módulo 4 (Neuroglía - Alberts):</strong> Citología de soporte vital de las células no excitables (superan en número 5-10 veces a las neuronas): astrocitos (nutrición metabólica, regulación de K⁺ y barrera hematoencefálica), mielinizadores (oligodendrocitos en SNC vs. células de Schwann en SNP) y microglía (fagocitosis y defensa inmunitaria), complementado con tabla comparativa de regeneración axonal y cicatriz glial.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-user-nurse text-accent mt-0.5 shrink-0 text-xs"></i>
+              <span><strong>Módulo 5 (Cuidados Clínicos):</strong> Correlación fisiopatológica y protocolos asistenciales de enfermería en 3 entidades clínicas: 1) Esclerosis múltiple (desmielinización en SNC, prevención de caídas y fenómeno de Uhthoff por hipertermia); 2) Encamamiento prolongado (degradación de filamentos de actina/miosina por desuso, movilización precoz y prevención de pie equino); y 3) Infarto de miocardio (reemplazo de miocitos necrosados por cicatriz conectiva colágena no contráctil, monitoreo hemodinámico y detección de arritmias por reentrada).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Claves para el Estudiante de Enfermería -->
+        <div class="p-3 bg-amber-50/80 rounded-xl border border-amber-200 text-[11px] text-amber-900 space-y-1">
+          <strong class="block font-bold text-amber-950 flex items-center gap-1.5">
+            <i class="fa-solid fa-lightbulb text-amber-700"></i> Claves para el Estudiante de Enfermería:
+          </strong>
+          <p>
+            1. En esclerosis múltiple, la mielina axonal dañada por linfocitos T ralentiza la conducción; el aumento de la temperatura corporal empeora críticamente el bloqueo (fenómeno de Uhthoff).<br>
+            2. La atrofia por encamamiento degrada la masa miofibrilar pero mantiene vivas las neuronas motoras; el plan de movilización temprana y alineación articular es la intervención prioritaria.<br>
+            3. Los miocardiocitos adultos no tienen división celular regenerativa; el área infartada se repara con tejido fibroso cicatrizal que compromete la fracción de eyección y predispone a arritmias.
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-gray-100 flex items-center justify-between">
+        <span class="text-[10.5px] text-gray-400 font-medium">UCCuyo • Ciencias Biológicas en Salud</span>
+        <button onclick="closeTutorial()" class="bg-accent hover:bg-accent-hover text-white font-semibold py-2 px-5 rounded-lg text-xs transition shadow-sm">
+          Entendido, Comenzar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Institucional Estándar -->
+  <footer class="bg-white border-t border-gray-200 mt-6">
+    <div class="max-w-6xl mx-auto px-4 py-3 text-center text-xs text-gray-500 font-semibold tracking-wide">
+      Desarrollado por vesalio - Todos los derechos reservados
+    </div>
+  </footer>
+
+  <!-- ==================== LÓGICA JAVASCRIPT INTEGRADA ==================== -->
+  <script>
+    /* Control de Pestañas */
+    const tabKeys = ['tab-snc-snp', 'tab-neurona', 'tab-sinapsis', 'tab-glia', 'tab-clinica'];
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+        tab.classList.remove('block');
+      });
+
+      const activeContent = document.getElementById(tabId);
+      if (activeContent) {
+        activeContent.classList.remove('hidden');
+        activeContent.classList.add('block');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      tabKeys.forEach(k => {
+        const btn = document.getElementById('btn-' + k);
+        if (btn) {
+          const icon = btn.querySelector('i');
+          if (k === tabId) {
+            btn.className = "bg-accent text-white flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition flex items-center gap-2.5 shadow-xs";
+            if (icon) icon.className = icon.className.replace(/text-\[[^\]]+\]/, 'text-white');
+          } else {
+            btn.className = "text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition flex items-center gap-2.5";
+            if (icon && icon.classList.contains('text-white')) {
+              icon.className = icon.className.replace('text-white', 'text-[#436600]');
+            }
+          }
+        }
+      });
+
+      if (tabId === 'tab-sinapsis') {
+        setTimeout(() => {
+          initSynapseCanvas();
+        }, 50);
+      }
+    }
+
+    /* Modal Guía de Uso */
+    function openTutorial() {
+      const modal = document.getElementById('tutorial-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeTutorial() {
+      const modal = document.getElementById('tutorial-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    /* ================= MÓDULO 2: EXPLORADOR DE NEURONA ================= */
+    const neuronDetails = {
+      dendritas: {
+        title: "Dendritas (Antenas Receptoras)",
+        desc: "Prolongaciones ramificadas cortas encargadas de recibir estímulos y señales sinápticas químicas de axones precedentes. Conducen la despolarización local (potencial graduado) de forma centrípeta hacia el soma."
+      },
+      soma: {
+        title: "Soma o Pericarion (Centro de Control)",
+        desc: "Contiene el núcleo voluminoso, nucléolo evidente, ribosomas abundantes y los Cuerpos de Nissl (retículo endoplásmico rugoso). Sintetiza los neurotransmisores peptídicos y enzimas metabólicas vitales."
+      },
+      axon: {
+        title: "Axón y Vainas de Mielina (Vía Rápida)",
+        desc: "Prolongación cilíndrica única que nace en el cono axónico (zona gatillo generadora del potencial de acción). Está recubierto en tramos por mielina, con interrupciones denominadas Nodos de Ranvier que permiten la propagación saltatoria ultra veloz."
+      },
+      terminal: {
+        title: "Botones Terminales / Teledendrón (Zona Emisora)",
+        desc: "Extremo distal del axón que forma la parte presináptica. Almacena miles de vesículas cargadas de neurotransmisores listas para ser vertidas a la hendidura sináptica tras el influjo de calcio (Ca²⁺)."
+      }
+    };
+
+    function showNeuronPart(partKey) {
+      const data = neuronDetails[partKey];
+      if (data) {
+        document.getElementById('detail-title').innerText = data.title;
+        document.getElementById('detail-desc').innerText = data.desc;
+        const box = document.getElementById('neuron-detail-card');
+        box.classList.remove('border-electric/40');
+        box.classList.add('border-synaptic');
+        setTimeout(() => {
+          box.classList.remove('border-synaptic');
+          box.classList.add('border-electric/40');
+        }, 500);
+      }
+    }
+
+    /* ================= MÓDULO 3: SIMULADOR DE SINAPSIS (CANVAS) ================= */
+    let canvas, ctx;
+    let particles = [];
+    let isFiring = false;
+    let synapseStage = 0; // 0: Reposo, 1: Ca2+, 2: Exocitosis, 3: Activación Postsináptica
+    let animationId = null;
+
+    function initSynapseCanvas() {
+      canvas = document.getElementById('synapseCanvas');
+      if (!canvas) return;
+      ctx = canvas.getContext('2d');
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      drawSynapseScene();
+    }
+
+    function resizeCanvas() {
+      if (!canvas) return;
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+      drawSynapseScene();
+    }
+
+    function drawSynapseScene() {
+      if (!ctx) return;
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // 1. Membrana Presináptica (Arriba: curva cóncava)
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(w, 0);
+      ctx.lineTo(w, h * 0.38);
+      ctx.bezierCurveTo(w * 0.7, h * 0.44, w * 0.3, h * 0.44, 0, h * 0.38);
+      ctx.closePath();
+      const gradPre = ctx.createLinearGradient(0, 0, 0, h * 0.4);
+      gradPre.addColorStop(0, '#0E172E');
+      gradPre.addColorStop(1, '#1E293B');
+      ctx.fillStyle = gradPre;
+      ctx.fill();
+      ctx.strokeStyle = '#00F0FF';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      // Etiqueta Presináptica
+      ctx.fillStyle = '#00F0FF';
+      ctx.font = 'bold 11px JetBrains Mono';
+      ctx.fillText('TERMINAL AXÓNICO PRESINÁPTICO', 20, 30);
+
+      // 2. Membrana Postsináptica (Abajo)
+      ctx.beginPath();
+      ctx.moveTo(0, h * 0.68);
+      ctx.bezierCurveTo(w * 0.3, h * 0.64, w * 0.7, h * 0.64, w, h * 0.68);
+      ctx.lineTo(w, h);
+      ctx.lineTo(0, h);
+      ctx.closePath();
+      const gradPost = ctx.createLinearGradient(0, h * 0.65, 0, h);
+      gradPost.addColorStop(0, '#16223F');
+      gradPost.addColorStop(1, '#070D1E');
+      ctx.fillStyle = gradPost;
+      ctx.fill();
+      ctx.strokeStyle = '#06D6A0';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      // Etiqueta Postsináptica
+      ctx.fillStyle = '#06D6A0';
+      ctx.font = 'bold 11px JetBrains Mono';
+      ctx.fillText('CÉLULA POSTSINÁPTICA (DENDRITA / MÚSCULO)', 20, h - 20);
+
+      // 3. Receptores en Membrana Postsináptica
+      const receptorCount = 6;
+      for (let i = 1; i <= receptorCount; i++) {
+        const rx = (w / (receptorCount + 1)) * i;
+        const ry = h * 0.66;
+        ctx.fillStyle = (synapseStage >= 3) ? '#FFB703' : '#06D6A0';
+        ctx.beginPath();
+        ctx.arc(rx, ry, 7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Pequeño canal iónico dibujado debajo del receptor
+        ctx.fillStyle = '#233863';
+        ctx.fillRect(rx - 3, ry + 7, 6, 12);
+      }
+
+      // 4. Vesículas Presinápticas almacenadas
+      const vesiclePositions = [
+        { x: w * 0.25, y: h * 0.22 },
+        { x: w * 0.4, y: h * 0.18 },
+        { x: w * 0.55, y: h * 0.25 },
+        { x: w * 0.7, y: h * 0.2 },
+        { x: w * 0.35, y: h * 0.32 },
+        { x: w * 0.6, y: h * 0.33 }
+      ];
+
+      vesiclePositions.forEach(pos => {
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 11, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 183, 3, 0.2)';
+        ctx.fill();
+        ctx.strokeStyle = '#FFB703';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Moléculas de neurotransmisores dentro
+        for (let j = 0; j < 3; j++) {
+          ctx.beginPath();
+          ctx.arc(pos.x + (j - 1) * 4, pos.y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = '#FFB703';
+          ctx.fill();
+        }
+      });
+
+      // 5. Dibujar Neurotransmisores libres en la hendidura
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowColor = '#FFB703';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      // Efecto eléctrico de potencial de acción si está activo
+      if (synapseStage === 1) {
+        ctx.strokeStyle = 'rgba(0, 240, 255, 0.8)';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(w * 0.1, 10);
+        ctx.lineTo(w * 0.3, h * 0.35);
+        ctx.lineTo(w * 0.5, 15);
+        ctx.lineTo(w * 0.7, h * 0.35);
+        ctx.lineTo(w * 0.9, 10);
+        ctx.stroke();
+      }
+
+      // Despolarización postsináptica si stage === 3
+      if (synapseStage >= 3) {
+        ctx.fillStyle = 'rgba(255, 183, 3, 0.15)';
+        ctx.fillRect(0, h * 0.68, w, h * 0.32);
+      }
+    }
+
+    function dispararSinapsis() {
+      if (isFiring) return;
+      isFiring = true;
+      const statusText = document.getElementById('synapse-status-text');
+      const btn = document.getElementById('btn-fire-ap');
+      btn.disabled = true;
+      btn.classList.add('opacity-50');
+
+      // Paso 1: Llega la onda eléctrica
+      synapseStage = 1;
+      highlightStep('step-1');
+      statusText.innerHTML = '<span class="text-electric font-bold">Fase 1:</span> Despolarización terminal y entrada de Ca²⁺';
+      drawSynapseScene();
+
+      // Generar partículas de neurotransmisor saliendo
+      setTimeout(() => {
+        // Paso 2: Exocitosis
+        synapseStage = 2;
+        highlightStep('step-2');
+        statusText.innerHTML = '<span class="text-synaptic font-bold">Fase 2:</span> Fusión de vesículas y liberación del neurotransmisor';
+
+        const w = canvas.width;
+        const h = canvas.height;
+        particles = [];
+        for (let i = 0; i < 45; i++) {
+          particles.push({
+            x: w * 0.2 + Math.random() * (w * 0.6),
+            y: h * 0.42 + Math.random() * 10,
+            vy: 1.2 + Math.random() * 1.8,
+            vx: (Math.random() - 0.5) * 1.2,
+            radius: 2.5 + Math.random() * 2,
+            color: '#FFB703',
+            targetY: h * 0.65
+          });
+        }
+        animateParticles();
+      }, 900);
+    }
+
+    function animateParticles() {
+      const h = canvas.height;
+      let allReached = true;
+
+      particles.forEach(p => {
+        if (p.y < p.targetY) {
+          p.y += p.vy;
+          p.x += p.vx;
+          allReached = false;
+        }
+      });
+
+      drawSynapseScene();
+
+      if (!allReached) {
+        animationId = requestAnimationFrame(animateParticles);
+      } else {
+        // Paso 3: Fijación a Receptores
+        synapseStage = 3;
+        highlightStep('step-3');
+        const statusText = document.getElementById('synapse-status-text');
+        statusText.innerHTML = '<span class="text-bioemerald font-bold">Fase 3:</span> Acoplamiento a receptores postsinápticos';
+        drawSynapseScene();
+
+        setTimeout(() => {
+          // Paso 4: Nuevo potencial de acción en la célula diana
+          synapseStage = 4;
+          highlightStep('step-4');
+          statusText.innerHTML = '<span class="text-crimsonrose font-bold">Fase 4:</span> Canales Na⁺ abiertos: ¡Generación de nuevo potencial!';
+          drawSynapseScene();
+          showToast('Transmisión Exitosa', 'El impulso electroquímico se ha transferido a la célula postsináptica.', 'success');
+
+          setTimeout(() => {
+            // Reset tras completar
+            particles = [];
+            synapseStage = 0;
+            isFiring = false;
+            const btn = document.getElementById('btn-fire-ap');
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+            statusText.innerText = 'Estado: Membrana en reposo (-70 mV)';
+            clearStepsHighlight();
+            drawSynapseScene();
+          }, 3000);
+        }, 1200);
+      }
+    }
+
+    function highlightStep(stepId) {
+      clearStepsHighlight();
+      const el = document.getElementById(stepId);
+      if (el) {
+        el.classList.add('border-synaptic', 'bg-cardnavy/90', 'shadow-glow-gold');
+      }
+    }
+
+    function clearStepsHighlight() {
+      ['step-1', 'step-2', 'step-3', 'step-4'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.remove('border-synaptic', 'bg-cardnavy/90', 'shadow-glow-gold');
+        }
+      });
+    }
+
+    /* Inicialización al Cargar Ventana */
+    window.onload = function() {
+      switchTab('tab-snc-snp');
+      initSynapseCanvas();
+    };
+  </script>
+</body>
+</html>
